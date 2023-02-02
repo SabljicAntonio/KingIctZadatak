@@ -46,6 +46,20 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.amadeus/amadeus-java -->
+		<dependency>
+			<groupId>com.amadeus</groupId>
+			<artifactId>amadeus-java</artifactId>
+			<version>6.5.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.10.1</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
