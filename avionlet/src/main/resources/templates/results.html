@@ -24,9 +24,17 @@
                 </tr>
             </thead>
             <tbody>
-                <!--<tr th:each="result : ${results}">
-                    <td th:text="${result.}"></td>
-                </tr>-->
+                <tr th:each="result : ${results}">
+                    <td th:text="${result.getDepartureAirport()}"></td>
+                    <td th:text="${result.getArrivalAirport()}"></td>
+                    <td th:text="${result.getDepartureDate()}"></td>
+                    <td th:text="${result.getReturnDate()}"></td>
+                    <td th:text="${result.getNumberOfLayoversDeparture()}"></td>
+                    <td th:text="${result.getnumberOfLayoversReturn()}"></td>
+                    <td th:text="${result.getCurrency()}"></td>
+                    <td th:text="${result.getFinalPrice()}"></td>
+
+                </tr>
             </tbody>
         </table>
     </main>

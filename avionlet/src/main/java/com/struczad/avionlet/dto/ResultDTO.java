@@ -43,7 +43,7 @@ public class ResultDTO {
         return departureDate;
     }
 
-    public String getreturnDate() {
+    public String getReturnDate() {
         return returnDate;
     }
 
