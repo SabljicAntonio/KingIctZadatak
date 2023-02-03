@@ -4,9 +4,9 @@ public class ResultDTO {
     private final String departureAirport;
     private final String arrivalAirport;
     private final String departureDate;
-    private final String arrivalDate;
+    private final String returnDate;
     private final String numberOfLayoversDeparture;
-    private final String numberOfLayoversArrival;
+    private final String numberOfLayoversReturn;
     private final String numberOfTravellers;
     private final String currency;
     private final String finalPrice;
@@ -14,18 +14,18 @@ public class ResultDTO {
     public ResultDTO(String departureAirport,
                      String arrivalAirport,
                      String departureDate,
-                     String arrivalDate,
+                     String returnDate,
                      String numberOfLayoversDeparture,
-                     String numberOfLayoversArrival,
+                     String numberOfLayoversReturn,
                      String numberOfTravellers,
                      String currency,
                      String finalPrice) {
         this.departureAirport = departureAirport;
         this.arrivalAirport = arrivalAirport;
         this.departureDate = departureDate;
-        this.arrivalDate = arrivalDate;
+        this.returnDate = returnDate;
         this.numberOfLayoversDeparture = numberOfLayoversDeparture;
-        this.numberOfLayoversArrival = numberOfLayoversArrival;
+        this.numberOfLayoversReturn = numberOfLayoversReturn;
         this.numberOfTravellers = numberOfTravellers;
         this.currency = currency;
         this.finalPrice = finalPrice;
@@ -43,16 +43,16 @@ public class ResultDTO {
         return departureDate;
     }
 
-    public String getArrivalDate() {
-        return arrivalDate;
+    public String getreturnDate() {
+        return returnDate;
     }
 
     public String getNumberOfLayoversDeparture() {
         return numberOfLayoversDeparture;
     }
 
-    public String getNumberOfLayoversArrival() {
-        return numberOfLayoversArrival;
+    public String getnumberOfLayoversReturn() {
+        return numberOfLayoversReturn;
     }
 
     public String getNumberOfTravellers() {
@@ -67,4 +67,18 @@ public class ResultDTO {
         return finalPrice;
     }
 
+    @Override
+    public String toString() {
+        return "ResultDTO{" +
+                "departureAirport='" + departureAirport + '\'' +
+                ", arrivalAirport='" + arrivalAirport + '\'' +
+                ", departureDate='" + departureDate + '\'' +
+                ", returnDate='" + returnDate + '\'' +
+                ", numberOfLayoversDeparture='" + numberOfLayoversDeparture + '\'' +
+                ", numberOfLayoversReturn='" + numberOfLayoversReturn + '\'' +
+                ", numberOfTravellers='" + numberOfTravellers + '\'' +
+                ", currency='" + currency + '\'' +
+                ", finalPrice='" + finalPrice + '\'' +
+                '}';
+    }
 }

@@ -26,7 +26,7 @@ public class FlightOffersSearch {
                         .and("destinationLocationCode", "BKK")
                         .and("departureDate", "2023-05-02") //format yyyy-mm-dd
                         .and("returnDate", "2023-11-08") //format yyyy-mm-dd
-                        .and("adults", 1)
+                        .and("adults", 2)
                         .and("currencyCode", "USD"));
 
 
@@ -38,12 +38,20 @@ public class FlightOffersSearch {
         // Rezultati se trebaju spremiti u bazu takoder
 
         LinkedList<ResultDTO> resultList = new LinkedList<>();
-        //Arrays.stream(flightOffersSearches).forEach((offer) -> System.out.println(offer)); //tu se izlistaju sve ponude na konzoli
-        /*Arrays.stream(flightOffersSearches).forEach((offer) -> {
+        Arrays.stream(flightOffersSearches).forEach((offer) -> {
             ResultDTO resultDTO = new ResultDTO(
-                    offer.getItineraries().
+                offer.getItineraries()[0].getSegments()[0].getDeparture().getIataCode(),
+                offer.getItineraries()[0].getSegments()[offer.getItineraries()[0].getSegments().length-1].getArrival().getIataCode(),
+                offer.getItineraries()[0].getSegments()[0].getDeparture().getAt(),
+                offer.getItineraries().length == 2 ? offer.getItineraries()[offer.getItineraries().length-1].getSegments()[0].getDeparture().getAt() : null,
+                String.valueOf(offer.getItineraries()[0].getSegments().length - 1),
+                offer.getItineraries().length == 2 ? String.valueOf(offer.getItineraries()[offer.getItineraries().length-1].getSegments().length - 1) : null,
+                String.valueOf(offer.getTravelerPricings().length),
+                offer.getPrice().getCurrency(),
+                offer.getPrice().getGrandTotal()
             );
-
-        });*/
+            resultList.add(resultDTO);
+        });
+        
     }
 }
