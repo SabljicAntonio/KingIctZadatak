@@ -14,7 +14,14 @@ import java.util.LinkedList;
 @Component
 public class FlightOffersSearch {
 
-    public static void main(String[] args) throws ResponseException { //ovo pretvorit u metodu
+    /*public static LinkedList<ResultDTO> getFlightResults(String originLocationCode,
+                                   String destinationLocationCode,
+                                   String departureDate,
+                                   String returnDate,
+                                   String adults,
+                                   String currencyCode) throws ResponseException { //ovo pretvorit u metodu*/
+
+    public LinkedList<ResultDTO> getFlightResults() throws ResponseException { //ovo pretvorit u metodu
 
         Amadeus amadeus = Amadeus
                 .builder("LOGAnsNM3wjjueRtOLrYIAa6JLBQAJzE","BZSbIb9K2lHkEE40")
@@ -29,13 +36,20 @@ public class FlightOffersSearch {
                         .and("adults", 2)
                         .and("currencyCode", "USD"));
 
+        /*FlightOfferSearch[] flightOffersSearches = amadeus.shopping.flightOffersSearch.get(
+                Params.with("originLocationCode", originLocationCode)
+                        .and("destinationLocationCode", destinationLocationCode)
+                        .and("departureDate", departureDate) //format yyyy-mm-dd
+                        .and("returnDate", returnDate) //format yyyy-mm-dd
+                        .and("adults", Integer.valueOf(adults))
+                        .and("currencyCode", currencyCode));*/
+
 
 
         if (flightOffersSearches[0].getResponse().getStatusCode() != 200) {
             System.out.println("Wrong status code: " + flightOffersSearches[0].getResponse().getStatusCode());
             System.exit(-1);
         }
-        // Rezultati se trebaju spremiti u bazu takoder
 
         LinkedList<ResultDTO> resultList = new LinkedList<>();
         Arrays.stream(flightOffersSearches).forEach((offer) -> {
@@ -52,6 +66,10 @@ public class FlightOffersSearch {
             );
             resultList.add(resultDTO);
         });
-        
+
+        // Rezultati se trebaju spremiti u bazu takoder
+
+        return resultList;
+
     }
 }

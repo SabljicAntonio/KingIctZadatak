@@ -1,10 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Airplane flight results</title>
 </head>
 <body>
-
+    <header>
+        <h1>Search results</h1>
+    </header>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Departure airport</th>
+                    <th>Arrival airport</th>
+                    <th>Departure date</th>
+                    <th>Arrival date</th>
+                    <th>Number of departure layovers</th>
+                    <th>Number of arrival layovers</th>
+                    <th>Number of passangers</th>
+                    <th>Currency</th>
+                    <th>Grand total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--<tr th:each="result : ${results}">
+                    <td th:text="${result.}"></td>
+                </tr>-->
+            </tbody>
+        </table>
+    </main>
 </body>
 </html>
