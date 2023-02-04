@@ -34,13 +34,24 @@ public class FlightOffersSearch {
                         .and("adults", 2)
                         .and("currencyCode", "USD"));*/
 
-        FlightOfferSearch[] flightOffersSearches = amadeus.shopping.flightOffersSearch.get(
-                Params.with("originLocationCode", originLocationCode)
-                        .and("destinationLocationCode", destinationLocationCode)
-                        .and("departureDate", departureDate) //format yyyy-mm-dd
-                        .and("returnDate", returnDate) //format yyyy-mm-dd
-                        .and("adults", Integer.valueOf(adults))
-                        .and("currencyCode", currencyCode));
+        FlightOfferSearch[] flightOffersSearches = null;
+
+        if(returnDate == null) {
+            flightOffersSearches = amadeus.shopping.flightOffersSearch.get(
+                    Params.with("originLocationCode", originLocationCode)
+                            .and("destinationLocationCode", destinationLocationCode)
+                            .and("departureDate", departureDate) //format yyyy-mm-dd
+                            .and("adults", Integer.valueOf(adults))
+                            .and("currencyCode", currencyCode));
+        } else {
+             flightOffersSearches = amadeus.shopping.flightOffersSearch.get(
+                    Params.with("originLocationCode", originLocationCode)
+                            .and("destinationLocationCode", destinationLocationCode)
+                            .and("departureDate", departureDate) //format yyyy-mm-dd
+                            .and("returnDate", returnDate) //format yyyy-mm-dd
+                            .and("adults", Integer.valueOf(adults))
+                            .and("currencyCode", currencyCode));
+        }
 
 
 

@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.LinkedList;
 
@@ -30,7 +31,7 @@ public class AvionLetController {
     }
 
     @PostMapping("/results")
-    public String getResults(Model model, @ModelAttribute FlightsRequest flightsRequest) throws ResponseException {
+    public String getResults(Model model, @ModelAttribute FlightsRequest flightsRequest) throws ResponseException, ResponseStatusException {
         System.out.println(flightsRequest);
         model.addAttribute("results",avionLetService.getResults(flightsRequest));
         return "results";
