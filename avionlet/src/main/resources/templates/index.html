@@ -5,6 +5,27 @@
     <title>Airplane flight search</title>
 </head>
 <body>
-Test
+<header>
+    <h1>Airplane flight search</h1>
+</header>
+<main>
+    <form action="#" th:action="@{/results}" th:object="${flightsRequest}" method = "post">
+        <label for="dep-airport">Departure airport</label>
+        <input type="text" id="dep-airport" th:field="*{depAirport}"/>
+        <label for="arr-airport">Arrival airport</label>
+        <input type="text" id="arr-airport" th:field="*{arrAirport}" />
+        <label for="dep-date">Departure date</label>
+        <input type="date" id="dep-date" th:field="*{depDate}" />
+        <label for="ret-date">Return date</label>
+        <input type="date" id="ret-date" th:field="*{retDate}" />
+        <label for="num-passangers">Number of passangers</label>
+        <input type="number" id="num-passangers" th:field="*{numOfPass}" />
+        <label for="currency">Currency</label>
+        <input type="text" id="currency" th:field="*{currency}" />
+        <br/>
+        <input type="submit" value="Submit"/>
+        <input type="reset" value="Reset"/>
+    </form>
+</main>
 </body>
 </html>

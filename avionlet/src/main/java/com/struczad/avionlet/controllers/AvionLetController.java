@@ -2,6 +2,7 @@ package com.struczad.avionlet.controllers;
 
 import com.amadeus.exceptions.ResponseException;
 import com.struczad.avionlet.dto.ResultDTO;
+import com.struczad.avionlet.requests.FlightsRequest;
 import com.struczad.avionlet.services.AvionLetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,19 +24,17 @@ public class AvionLetController {
     }
 
     @GetMapping("/")
-    public String getIndex() {
+    public String getIndex(Model model) {
+        model.addAttribute("flightsRequest",new FlightsRequest());
         return "index";
     }
 
-    /*@PostMapping("/results")
-    public String getResults(@ModelAttribute Model model) throws ResponseException {
-        model.addAttribute("search-results",avionLetService.getResults());
-        return "results";
-    }*/
-    @GetMapping("/results")
-    public String getResults(Model model) throws ResponseException {
-        model.addAttribute("results",avionLetService.getResults());
+    @PostMapping("/results")
+    public String getResults(Model model, @ModelAttribute FlightsRequest flightsRequest) throws ResponseException {
+        System.out.println(flightsRequest);
+        model.addAttribute("results",avionLetService.getResults(flightsRequest));
         return "results";
     }
+
 
 }

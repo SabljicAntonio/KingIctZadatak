@@ -14,35 +14,33 @@ import java.util.LinkedList;
 @Component
 public class FlightOffersSearch {
 
-    /*public static LinkedList<ResultDTO> getFlightResults(String originLocationCode,
+    public static LinkedList<ResultDTO> getFlightResults(String originLocationCode,
                                    String destinationLocationCode,
                                    String departureDate,
                                    String returnDate,
                                    String adults,
                                    String currencyCode) throws ResponseException { //ovo pretvorit u metodu*/
 
-    public LinkedList<ResultDTO> getFlightResults() throws ResponseException { //ovo pretvorit u metodu
-
         Amadeus amadeus = Amadeus
                 .builder("LOGAnsNM3wjjueRtOLrYIAa6JLBQAJzE","BZSbIb9K2lHkEE40")
                 .build();
 
         //promjenit da se dohvaca na parametre
-        FlightOfferSearch[] flightOffersSearches = amadeus.shopping.flightOffersSearch.get(
+        /*FlightOfferSearch[] flightOffersSearches = amadeus.shopping.flightOffersSearch.get(
                 Params.with("originLocationCode", "SYD")
                         .and("destinationLocationCode", "BKK")
                         .and("departureDate", "2023-05-02") //format yyyy-mm-dd
                         .and("returnDate", "2023-11-08") //format yyyy-mm-dd
                         .and("adults", 2)
-                        .and("currencyCode", "USD"));
+                        .and("currencyCode", "USD"));*/
 
-        /*FlightOfferSearch[] flightOffersSearches = amadeus.shopping.flightOffersSearch.get(
+        FlightOfferSearch[] flightOffersSearches = amadeus.shopping.flightOffersSearch.get(
                 Params.with("originLocationCode", originLocationCode)
                         .and("destinationLocationCode", destinationLocationCode)
                         .and("departureDate", departureDate) //format yyyy-mm-dd
                         .and("returnDate", returnDate) //format yyyy-mm-dd
                         .and("adults", Integer.valueOf(adults))
-                        .and("currencyCode", currencyCode));*/
+                        .and("currencyCode", currencyCode));
 
 
 
