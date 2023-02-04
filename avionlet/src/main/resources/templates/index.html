@@ -8,39 +8,38 @@
     <link rel="stylesheet" href="../static/stylesheet.css"/>
 </head>
 <body>
-<header class="header">
+<header class="navbar navbar-expand-lg navbar-light bg-light header">
     <h1>Airplane flight search</h1>
 </header>
-<main>
+<main class="main-section">
     <form action="#" th:action="@{/results}" th:object="${flightsRequest}" method = "post" class="form-main">
-        <div class="form-element">
-            <label for="dep-airport">Departure airport</label>
+        <div class="form-group">
+            <label for="dep-airport" class="form-label">Departure airport</label>
             <input type="text" id="dep-airport" th:field="*{depAirport}"/>
         </div>
-        <div class="form-element">
-            <label for="arr-airport">Arrival airport</label>
+        <div class="form-group">
+            <label for="arr-airport" class="form-label">Arrival airport</label>
             <input type="text" id="arr-airport" th:field="*{arrAirport}" />
         </div>
-        <div class="form-element">
-            <label for="dep-date">Departure date</label>
+        <div class="form-group">
+            <label for="dep-date" class="form-label">Departure date</label>
             <input type="date" id="dep-date" th:field="*{depDate}" />
         </div>
-        <div class="form-element">
-            <label for="ret-date">Return date</label>
+        <div class="form-group">
+            <label for="ret-date" class="form-label">Return date</label>
             <input type="date" id="ret-date" th:field="*{retDate}" />
         </div>
-        <div class="form-element">
-            <label for="num-passangers">Number of passangers</label>
+        <div class="form-group">
+            <label for="num-passangers" class="form-label">Number of passangers</label>
             <input type="number" id="num-passangers" th:field="*{numOfPass}" />
         </div>
-        <div class="form-element">
-            <label for="currency">Currency</label>
+        <div class="form-group">
+            <label for="currency" class="form-label">Currency</label>
             <input type="text" id="currency" th:field="*{currency}" />
         </div>
-        <br/>
-        <div class="form-element">
-            <input type="submit" value="Submit"/>
-            <input type="reset" value="Reset"/>
+        <div class="form-group">
+            <input type="submit" value="Submit" class="btn btn-primary"/>
+            <input type="reset" value="Reset" class="btn btn-secondary"/>
         </div>
     </form>
 </main>
