@@ -3,28 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Airplane flight results</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/stylesheet.css"/>
+    <style>
+
+        .header {
+            display: flex;
+            justify-content: center;
+            font-family: monospace;
+            align-items: center;
+            padding-top: 0.8rem;
+        }
+    </style>
 </head>
 <body>
-    <header>
+    <header class="navbar navbar-expand-lg navbar-light bg-light header">
         <h1>Search results</h1>
     </header>
     <main>
-        <table>
+        <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>Departure airport</th>
-                    <th>Arrival airport</th>
-                    <th>Departure date</th>
-                    <th>Arrival date</th>
-                    <th>Number of departure layovers</th>
-                    <th>Number of arrival layovers</th>
-                    <th>Number of passangers</th>
-                    <th>Currency</th>
-                    <th>Grand total</th>
+                    <th scope="col">Departure airport</th>
+                    <th scope="col">Arrival airport</th>
+                    <th scope="col">Departure date</th>
+                    <th scope="col">Arrival date</th>
+                    <th scope="col">Number of departure layovers</th>
+                    <th scope="col">Number of arrival layovers</th>
+                    <th scope="col">Number of passangers</th>
+                    <th scope="col">Currency</th>
+                    <th scope="col">Grand total</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="result : ${results}">
+                <tr th:each="result : ${results}"  scope="row">
                     <td th:text="${result.getDepartureAirport()}"></td>
                     <td th:text="${result.getArrivalAirport()}"></td>
                     <td th:text="${result.getDepartureDate()}"></td>
@@ -39,5 +51,8 @@
             </tbody>
         </table>
     </main>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
