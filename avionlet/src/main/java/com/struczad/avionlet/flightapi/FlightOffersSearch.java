@@ -25,14 +25,6 @@ public class FlightOffersSearch {
                 .builder("LOGAnsNM3wjjueRtOLrYIAa6JLBQAJzE","BZSbIb9K2lHkEE40")
                 .build();
 
-        //promjenit da se dohvaca na parametre
-        /*FlightOfferSearch[] flightOffersSearches = amadeus.shopping.flightOffersSearch.get(
-                Params.with("originLocationCode", "SYD")
-                        .and("destinationLocationCode", "BKK")
-                        .and("departureDate", "2023-05-02") //format yyyy-mm-dd
-                        .and("returnDate", "2023-11-08") //format yyyy-mm-dd
-                        .and("adults", 2)
-                        .and("currencyCode", "USD"));*/
 
         FlightOfferSearch[] flightOffersSearches = null;
 

@@ -1,0 +1,12 @@
+
+.header {
+    display: flex;
+    justify-content: center;
+    background: aqua;
+
+}
+
+.form-element {
+    display: flex;
+    justify-content: center;
+}
