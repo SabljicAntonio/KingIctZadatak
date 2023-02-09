@@ -6,6 +6,9 @@ import com.amadeus.exceptions.ResponseException;
 import com.amadeus.resources.FlightOfferSearch;
 import com.google.gson.Gson;
 import com.struczad.avionlet.dto.ResultDTO;
+import com.struczad.avionlet.model.FlightOfferSearchEntity;
+import com.struczad.avionlet.repository.FlightOfferSearchEntityRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -13,13 +16,19 @@ import java.util.LinkedList;
 
 @Component
 public class FlightOffersSearch {
+    private final FlightOfferSearchEntityRepository flightOfferSearchEntityRepository;
+    @Autowired
+    public FlightOffersSearch(FlightOfferSearchEntityRepository flightOfferSearchEntityRepository) {
+        this.flightOfferSearchEntityRepository = flightOfferSearchEntityRepository;
+    }
 
-    public static LinkedList<ResultDTO> getFlightResults(String originLocationCode,
-                                   String destinationLocationCode,
-                                   String departureDate,
-                                   String returnDate,
-                                   String adults,
-                                   String currencyCode) throws ResponseException { //ovo pretvorit u metodu*/
+
+    public LinkedList<ResultDTO> getFlightResults(String originLocationCode,
+                                                         String destinationLocationCode,
+                                                         String departureDate,
+                                                         String returnDate,
+                                                         String adults,
+                                                         String currencyCode) throws ResponseException { //ovo pretvorit u metodu*/
 
         Amadeus amadeus = Amadeus
                 .builder("LOGAnsNM3wjjueRtOLrYIAa6JLBQAJzE","BZSbIb9K2lHkEE40")
@@ -46,13 +55,22 @@ public class FlightOffersSearch {
         }
 
 
+        Gson gson = new Gson();
+
 
         if (flightOffersSearches[0].getResponse().getStatusCode() != 200) {
             System.out.println("Wrong status code: " + flightOffersSearches[0].getResponse().getStatusCode());
             System.exit(-1);
         }
 
+        for(FlightOfferSearch res: flightOffersSearches) {
+            FlightOfferSearchEntity emp = new FlightOfferSearchEntity();
+            emp.setFlightOfferSearchJson(gson.toJson(res));
+            flightOfferSearchEntityRepository.save(emp);
+        }
+        //spremanje u bazu
         LinkedList<ResultDTO> resultList = new LinkedList<>();
+
         Arrays.stream(flightOffersSearches).forEach((offer) -> {
             ResultDTO resultDTO = new ResultDTO(
                 offer.getItineraries()[0].getSegments()[0].getDeparture().getIataCode(),
@@ -68,7 +86,6 @@ public class FlightOffersSearch {
             resultList.add(resultDTO);
         });
 
-        // Rezultati se trebaju spremiti u bazu takoder
 
         return resultList;
 
