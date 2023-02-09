@@ -47,4 +47,12 @@ public class AvionLetService {
 
         return results;
     }
+    public LinkedList<ResultDTO> getCachedResults() throws ResponseStatusException, ResponseException {
+        LinkedList<ResultDTO> results;
+
+        results = flightOffersSearch.getFlightResultsCached();
+
+        return results;
+    }
+
 }
