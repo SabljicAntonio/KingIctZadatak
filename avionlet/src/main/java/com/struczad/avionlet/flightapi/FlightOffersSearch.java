@@ -58,13 +58,8 @@ public class FlightOffersSearch {
         }
 
 
+
         Gson gson = new Gson();
-
-
-        if (flightOffersSearches[0].getResponse().getStatusCode() != 200) {
-            System.out.println("Wrong status code: " + flightOffersSearches[0].getResponse().getStatusCode());
-            System.exit(-1);
-        }
 
         for(FlightOfferSearch res: flightOffersSearches) {
             FlightOfferSearchEntity emp = new FlightOfferSearchEntity();

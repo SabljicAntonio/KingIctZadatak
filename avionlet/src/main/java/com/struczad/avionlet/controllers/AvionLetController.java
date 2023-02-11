@@ -5,6 +5,7 @@ import com.struczad.avionlet.dto.ResultDTO;
 import com.struczad.avionlet.requests.FlightsRequest;
 import com.struczad.avionlet.services.AvionLetService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,15 +35,21 @@ public class AvionLetController {
     }
 
     @PostMapping("/results")
-    public String getResults(Model model, @ModelAttribute FlightsRequest flightsRequest) throws ResponseException, ResponseStatusException {
+    public String getResults(Model model, @ModelAttribute FlightsRequest flightsRequest) throws ResponseStatusException, ResponseException {
         System.out.println(flightsRequest);
         if(!flightsRequest.toString().equals(prevSearch.toString())) {
             prevSearch = flightsRequest;
-            model.addAttribute("results", avionLetService.getResults(flightsRequest));
+            LinkedList<ResultDTO> res = avionLetService.getResults(flightsRequest);
+            if(!res.isEmpty()) {
+                model.addAttribute("results", res);
+            }
         }
         else {
             prevSearch = flightsRequest;
-            model.addAttribute("results", avionLetService.getCachedResults()); //tu se dohvacaju cached podatci
+            LinkedList<ResultDTO> res = avionLetService.getCachedResults();
+            if(!res.isEmpty()) {
+                model.addAttribute("results", res);
+            }
         }
         return "results";
     }
